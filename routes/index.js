@@ -29,6 +29,13 @@ router.get('/', (req, res) => {
 	
 })
 
+router.post('/addprofile', (req, res) => {
+  const body = req.body
+  body['languages'] = req.body.languages.split(', ')
+
+  profiles[body.username] = body
+  res.redirect('/profile/'+body.username)
+})
 
 router.get('/query', (req, res) => {
   const name = req.query.name
